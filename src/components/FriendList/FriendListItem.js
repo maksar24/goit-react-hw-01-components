@@ -1,11 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { Friend, IsActive } from './FriendListItem.styles';
 
 export const FriendListItem = ({ id, avatar, name, isOnline }) => {
     return (
-        <li className="item" key={id}>
-            <span class="status">{isOnline}</span>
-            <img class="avatar" src={avatar} alt={name} width="48" />
-            <p class="name">{name}</p>
-        </li>
+        <Friend key={id}>
+            <IsActive status={isOnline}></IsActive>
+            <img className="avatar" src={avatar} alt={name} width="48" />
+            <p className="name">{name}</p>
+        </Friend>
     )
+};
+
+FriendListItem.propTypes = {
+    FriendListItem: PropTypes.string,
+    name: PropTypes.string,
+    isOnline: PropTypes.bool,
+    id: PropTypes.number,
 };

@@ -1,31 +1,43 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import {
+    ProfileForm, Description, Stats, Photo, Name, Info, StatsItem, Label, Quantity
+    } from './Profile.styles';
 
-export const Profile = (props) => {
-    return (<div className="profile">
-        <div className="description">
-            <img
-                src={props.avatar}
-                alt={props.name}
+export const Profile = ({avatar, name, location, tag, stats}) => {
+    return (<ProfileForm>
+        <Description>
+            <Photo
+                src={avatar}
+                alt={name}
                 className="avatar"
             />
-            <p className="name">{props.name}</p>
-            <p className="tag">{props.tag}</p>
-            <p className="location">{props.location}</p>
-        </div>
+            <Name>{name}</Name>
+            <Info>{tag}</Info>
+            <Info>{location}</Info>
+        </Description>
 
-        <ul className="stats">
-            <li>
-                <span className="label">Followers</span>
-                <span className="quantity">{props.stats.followers}</span>
-            </li>
-            <li>
-                <span className="label">Views</span>
-                <span className="quantity">{props.stats.views}</span>
-            </li>
-            <li>
-                <span className="label">Likes</span>
-                <span className="quantity">{props.stats.likes}</span>
-            </li>
-        </ul>
-    </div>);
+        <Stats>
+            <StatsItem>
+                <Label>Followers</Label>
+                <Quantity>{stats.followers}</Quantity>
+            </StatsItem>
+            <StatsItem>
+                <Label>Views</Label>
+                <Quantity>{stats.views}</Quantity>
+            </StatsItem>
+            <StatsItem>
+                <Label>Likes</Label>
+                <Quantity>{stats.likes}</Quantity>
+            </StatsItem>
+        </Stats>
+    </ProfileForm>);
+};
+
+Profile.propTypes = {
+    avatar: PropTypes.string,
+    location: PropTypes.string,
+    name: PropTypes.string,
+    tag: PropTypes.string,
+    stats: PropTypes.objectOf(PropTypes.number),
 };

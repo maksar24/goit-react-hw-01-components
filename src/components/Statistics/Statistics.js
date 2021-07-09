@@ -1,18 +1,29 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { StatisticsBlock, StatList, StatsItem, Title } from './Statistics.styles';
 
 export const Statistics = ({ title, stats }) => {
     return (
-        <section className="statistics">
-            {title && (<h2 className="title">{title}</h2>)}
+        <StatisticsBlock>
+            {title && (<Title>{title}</Title>)}
 
-            <ul className="stat-list">
+            <StatList>
                 {stats.map(value => (
-                    <li className="item" key={value.id}>
+                    <StatsItem key={value.id}>
                         <span className="label">{value.label}</span>
-                        <span className="percentage">{value.percentage}</span>
-                    </li>
+                        <span className="percentage">{value.percentage}%</span>
+                    </StatsItem>
                 ))}
-            </ul>
-        </section>
+            </StatList>
+        </StatisticsBlock>
     );
+};
+
+Statistics.defaultProps = {
+    stats: [],
+};
+
+Statistics.propTypes = {
+    stats: PropTypes.array,
+    title: PropTypes.string,
 };
