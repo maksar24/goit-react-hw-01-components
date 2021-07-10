@@ -12,7 +12,7 @@ const Offline = css`
 const Status = (status) => {
     if (status === false) {
         return Offline;
-    }
+    } 
     return Online;
 };
 
