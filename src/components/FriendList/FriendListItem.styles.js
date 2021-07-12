@@ -9,8 +9,8 @@ const Offline = css`
     rgb(204, 63, 63);
 `;
 
-const Status = (status) => {
-    if (status === false) {
+const Status = (props) => {
+    if (props.status === false) {
         return Offline;
     } 
     return Online;
